@@ -245,9 +245,9 @@ cd ai-backend
 
 Preencha antes da entrega:
 
-- **Grupo:** `[PREENCHER]`
-- **Integrantes (nome — matrícula):** `[PREENCHER]`
-- **Disciplinas cursadas:** `[PREENCHER]`
+- **Grupo:** Projeto integrado: Inteligência Artificial, Segurança e Otimização de BD
+- **Integrantes (nome — matrícula):** Caio Victor Lopes Serra (231071580) e Carlos Henrique Santos de Carvalho (232070273) 
+- **Disciplinas cursadas:** Inteligência Artificial, Segurança e Otimização de BD
 
 ---
 
