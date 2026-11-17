@@ -56,7 +56,4 @@ curl -X POST http://127.0.0.1:8000/api/v1/analyze-context \
 - logs com redação de CPF/CNS/e-mail;
 - handler global que não vaza stack traces.
 
-## Fase 2
 
-`pymongo` já está em `requirements.txt` e o Repository Pattern está pronto.
-Defina `DATABASE_URL` no `.env` e descomente o serviço `mongo` no `docker-compose.yml`.
