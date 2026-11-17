@@ -1,0 +1,14 @@
+{
+  "validador-valido": {
+    "x": 1126,
+    "y": 0,
+    "width": 443,
+    "height": 351
+  },
+  "validador-invalido": {
+    "x": 1126,
+    "y": 0,
+    "width": 443,
+    "height": 457
+  }
+}

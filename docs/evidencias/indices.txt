@@ -1,0 +1,29 @@
+INTEGRIDADE, VOLUME E ÍNDICES — SQLITE
+======================================================================
+
+PRAGMA integrity_check: ok
+
+VOLUME
+  fictional_users: 12.000
+  fictional_lmes: 18.000
+  catalog_medications: 40
+  audit_logs: 210
+
+ÍNDICES
+  fictional_users.ix_fictional_users_unidade: unidade
+  fictional_users.ix_fictional_users_cns_ficticio: cns_ficticio
+  fictional_users.ix_fictional_users_email: email
+  fictional_lmes.ix_lme_status_usuario: status, user_id
+  fictional_lmes.ix_lme_cid10: cid10
+  fictional_lmes.ix_lme_status: status
+  fictional_lmes.ix_lme_usuario: user_id
+
+PLANOS OTIMIZADOS
+  Pacientes por unidade (cidade):
+    -> 3 | 0 | 54 | SEARCH fictional_users USING COVERING INDEX ix_fictional_users_unidade (unidade=?)
+  LMEs por CID:
+    -> 3 | 0 | 52 | SEARCH fictional_lmes USING COVERING INDEX ix_lme_cid10 (cid10=?)
+  LMEs pendentes por paciente de uma unidade:
+    -> 3 | 0 | 53 | SEARCH fictional_lmes USING COVERING INDEX ix_lme_status_usuario (status=? AND user_id=?)
+    -> 8 | 0 | 0 | LIST SUBQUERY 1
+    -> 10 | 8 | 54 | SEARCH fictional_users USING COVERING INDEX ix_fictional_users_unidade (unidade=?)

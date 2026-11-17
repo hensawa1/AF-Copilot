@@ -1,0 +1,62 @@
+# Segredos e configuração local
+ai-backend/.env
+ai-backend/.env.*
+!ai-backend/.env.example
+ai-backend/runtime/
+!ai-backend/runtime/.gitkeep
+*.key
+*.pem
+
+# Banco de dados e artefatos de execução
+*.db
+*.sqlite
+*.sqlite3
+*.log
+logs/
+
+# Python
+ai-backend/.venv/
+**/__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Node / Electron
+desktop-client/node_modules/
+desktop-client/dist/
+desktop-client/release/
+desktop-client/out/
+tooling/node_modules/
+node_modules/
+*.tsbuildinfo
+
+# Caches de modelos e ferramentas
+.cache/
+tools/node_modules/
+tools/.cache/
+
+# Sistema / editores
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Arquivos locais de execução/academicamente não versionados
+/smoke-test.ps1
+/start.ps1
+/TECNOLOGIAS.txt
+/VALIDATION.md
+/AF Copilot.lnk
+
+# Código-fonte externo baixado apenas para análise (não é nosso)
+/tools/recon/
+
+# Artefatos temporários de captura de tela
+/evidencias/tmp-*.png
+/evidencias/desktop-atual.png
+/evidencias/teste-*.png
+
+# Arquivo compactado local (duplicata das evidências)
+/evidencias.7z

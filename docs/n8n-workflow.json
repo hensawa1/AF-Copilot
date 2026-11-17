@@ -1,0 +1,72 @@
+{
+  "name": "AF Copilot — RAG de protocolos (pendente de instância n8n)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "af-copilot/rag",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-af",
+      "name": "Webhook — pergunta/contexto",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 1,
+      "position": [220, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://127.0.0.1:8000/api/v1/analyze-context",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" },
+            { "name": "X-Internal-Auth-Token", "value": "={{ $env.AF_INTERNAL_TOKEN }}" },
+            { "name": "X-Session-Token", "value": "={{ $json.session_token }}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ context: $json.context }) }}",
+        "options": {}
+      },
+      "id": "http-rag",
+      "name": "HTTP Request — backend RAG",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [500, 300]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            { "id": "a1", "name": "criterios", "value": "={{ $json.criteria.join('\\n') }}", "type": "string" },
+            { "id": "a2", "name": "exames", "value": "={{ $json.exams.join('\\n') }}", "type": "string" },
+            { "id": "a3", "name": "fontes", "value": "={{ $json.sources.join('\\n') }}", "type": "string" }
+          ]
+        },
+        "options": {}
+      },
+      "id": "set-saida",
+      "name": "Set — resposta formatada",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3,
+      "position": [780, 300]
+    },
+    {
+      "parameters": { "respondWith": "json", "responseBody": "={{ $json }}" },
+      "id": "respond",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1060, 300]
+    }
+  ],
+  "connections": {
+    "Webhook — pergunta/contexto": { "main": [[{ "node": "HTTP Request — backend RAG", "type": "main", "index": 0 }]] },
+    "HTTP Request — backend RAG": { "main": [[{ "node": "Set — resposta formatada", "type": "main", "index": 0 }]] },
+    "Set — resposta formatada": { "main": [[{ "node": "Respond to Webhook", "type": "main", "index": 0 }]] }
+  },
+  "settings": { "executionOrder": "v1" }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="pt-BR"><head><meta charset="utf-8">
+<style>
+body{font-family:"Segoe UI",sans-serif;background:#0b1320;color:#e7eef8;margin:0;padding:26px}
+h1{color:#7fd1c4;font-size:20px;margin:0 0 4px}
+p{color:#91a4bd;font-size:12px;margin:0 0 18px}
+.card{background:#142337;border:1px solid #1d2f47;border-radius:12px;padding:18px;margin-bottom:16px}
+.card h2{color:#7fd1c4;font-size:13px;margin:0 0 12px;text-transform:uppercase;letter-spacing:1px}
+pre{white-space:pre-wrap;font-family:Consolas,monospace;font-size:12px;line-height:1.6;margin:0}
+.denied{color:#ef6c6c;font-weight:bold}
+.allowed{color:#69d69d}
+</style></head><body>
+<div id="secao-negado" class="card">
+<h2>Prova 1 — Perfil sem permissão consultando a IA</h2>
+<pre>PERFIL: Assistente (assistente.farma)
+  login -&gt; 200
+  GET /fictional/audit ............ 403 <span class="denied">NEGADO</span>
+  GET /fictional/audit/export ..... 403 <span class="denied">NEGADO</span>
+  POST /fictional/medicamentos .... 403 <span class="denied">NEGADO</span>
+  IA /admin/ask 'Arlindo' ........ 200 | linhas=0 | <span class="denied">RBAC aplicado</span> à IA para o perfil Assistente.
+
+  GET /fictional/audit (admin) -&gt; 200</pre>
+</div>
+<div id="secao-auditoria" class="card">
+<h2>Prova 2 — Auditoria da IA (quem, o quê, quando)</h2>
+<pre>AUDITORIA DA IA (o que consultou, quem pediu, quando):
+  2026-11-16T23:48:53 | assistente.farma | consulta_ia | pacientes | pergunta=Arlindo | perfil=Assistente | <span class="denied">linhas=0</span>
+  2026-11-16T23:48:53 | auditor.sesab | consulta_ia | pacientes | pergunta=Arlindo | perfil=Auditor | <span class="allowed">linhas=100</span>
+  2026-11-16T23:48:53 | henriquecarvalho | consulta_ia | pacientes | pergunta=Arlindo | perfil=Farmacêutico | <span class="denied">linhas=0</span>
+  2026-11-16T23:48:53 | admin.sesab | consulta_ia | pacientes | pergunta=Arlindo | perfil=Administrador | <span class="allowed">linhas=100</span>
+  2026-11-16T23:40:55 | henriquecarvalho | consulta_ia | fornecedores | pergunta=Qual o fornecedor de Salvador? | perfil=Farmacêutico | linhas=1
+  2026-11-16T23:40:55 | henriquecarvalho | insights_ia | insights | perfil=Farmacêutico | modelo=gemini-3.5-flash-lite
+  2026-11-16T23:39:39 | auditor.sesab | consulta_ia | pacientes | pergunta=Arlindo | perfil=Auditor | <span class="allowed">linhas=100</span>
+  2026-11-16T23:39:39 | henriquecarvalho | consulta_ia | pacientes | pergunta=Arlindo | perfil=Farmacêutico | <span class="denied">linhas=0</span>
+</pre>
+</div>
+</body></html>

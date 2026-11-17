@@ -1,0 +1,20 @@
+{"instruction":"Quais exames são obrigatórios para uma LME de diabetes (CID E11)?","input":"","output":"Glicemia em jejum, HbA1c, creatinina e hemograma completo. Critérios: diagnóstico confirmado e falha no tratamento básico."}
+{"instruction":"O que verificar antes de autorizar metformina 850 mg?","input":"","output":"Confirmar CID E11, glicemia e creatinina; checar contraindição e interação com insulina; alertar hipoglicemia."}
+{"instruction":"Quais os critérios para inclusão em PCDT de hipertensão?","input":"","output":"Hipertensão resistente ao tratamento básico, PA acima da meta e uso de losartana/anlodipino."}
+{"instruction":"Que exames pedir para asma persistente (J45)?","input":"","output":"Espirometria, teste de broncodilatação e hemograma com eosinófilos."}
+{"instruction":"Como fazer a análise de um protocolo no AF Copilot?","input":"","output":"1) Selecione o medicamento ou CID no painel esquerdo. 2) Clique em Analisar protocolos. 3) Confira critérios, exames e alertas antes de autorizar."}
+{"instruction":"Qual o fornecedor de Salvador?","input":"","output":"Distribuidora Bahia Farma Ltda, CNPJ 12.345.678/0001-01, contato Carlos Andrade, telefone (71) 3221-4500."}
+{"instruction":"Liste as LMEs que não foram autorizadas ainda.","input":"","output":"Existem LMEs pendentes de autorização; a relação completa é exibida na tabela com ID, medicamento, paciente, unidade, CID e emissão."}
+{"instruction":"Quais medicamentos estão cadastrados?","input":"","output":"O catálogo contém 40 medicamentos com código SIM, nome, princípio ativo e apresentação."}
+{"instruction":"Quantos usuários e LMEs existem na base?","input":"","output":"12.000 usuários e 18.000 LMEs, com status distribuídos entre pendente, autorizada, faturada e dispensada."}
+{"instruction":"Mostre os pacientes com tratamento de insulina.","input":"","output":"Pacientes com insulinas Glargina, Regular e NPH, cada um com posologia própria."}
+{"instruction":"Qual o CID de doença de Crohn?","input":"","output":"K50. Medicamento associado no PCDT: Infliximabe."}
+{"instruction":"O que fazer quando a receita está vencida?","input":"","output":"O validador multimodal sinaliza 'receita vencida'; não autorizar até emissão de nova prescrição."}
+{"instruction":"Como o copiloto protege dados pessoais?","input":"","output":"O filtro LGPD remove CPF, CNS, nome e prontuário antes de sair do Electron; o backend envia somente agregados ao modelo."}
+{"instruction":"Qual a diferença entre autorizada e faturada?","input":"","output":"Autorizada é a LME aprovada para dispensação; faturada é a que já teve o faturamento registrado."}
+{"instruction":"Quais unidades têm mais pendências?","input":"","output":"UBS Centro, UBS Jardim Primavera e UBS Vila Nova concentram o maior número de LMEs pendentes."}
+{"instruction":"Explique o alerta de dispensação para Tacrolimo.","input":"","output":"Monitorar níveis séricos, função renal e interações; verificar adesão e efeitos adversos."}
+{"instruction":"Como cadastrar um medicamento novo?","input":"","output":"Em Cadastros, clique em + Novo medicamento, preencha nome, princípio ativo e apresentação; o registro vai para o SQLite com auditoria."}
+{"instruction":"O que o botão Auditar base faz?","input":"","output":"Procura pendências, baixa conversão autorizada→dispensada, unidades críticas e pacientes com muitas LMEs."}
+{"instruction":"Como exportar um relatório?","input":"","output":"Em qualquer tela, clique em ↓ CSV ou ↓ PDF; o arquivo é salvo em Downloads/AF Copilot e aberto automaticamente."}
+{"instruction":"O que fazer se o Gemini estiver sem cota?","input":"","output":"O sistema usa fallback entre modelos e, para protocolos conhecidos, responde pela base local em milissegundos."}

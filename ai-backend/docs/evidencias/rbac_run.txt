@@ -1,0 +1,16 @@
+python.exe : Traceback (most recent call last):
+No linha:1 caractere:397
++ ... plain.log'; & .\.venv\Scripts\python.exe rbac_evidence.py *> 'docs\ev ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\offsechen1\Desktop\AF\ai-backend\rbac_evidence.py", line 66, in <module>
+    main()
+  File "C:\Users\offsechen1\Desktop\AF\ai-backend\rbac_evidence.py", line 54, in main
+    ia_logs = [l for l in logs if l["acao"] in ("consulta_ia", "insights_ia")]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\offsechen1\Desktop\AF\ai-backend\rbac_evidence.py", line 54, in <listcomp>
+    ia_logs = [l for l in logs if l["acao"] in ("consulta_ia", "insights_ia")]
+                                  ~^^^^^^^^
+TypeError: string indices must be integers, not 'str'

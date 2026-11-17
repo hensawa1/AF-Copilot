@@ -1,0 +1,6 @@
+=== FINE-TUNING LOCAL — EXPERIMENTO PRELIMINAR ===
+dataset: 20 pares | treino=16 | validacao=4
+amostra: Pergunta: metformina 850 mg E11 diabetes / Resposta: ...
+python=3.11.16 | torch=2.15.0+cpu | transformers=4.46.3
+cpu=AMD64 Family 25 Model 80 Stepping 0, AuthenticAMD | nucleos=4 | cuda=False
+modelo_base=pierreguillou/gpt2-small-portuguese | fallback=distilgpt2 | epochs=3 | max_len=192

@@ -1,0 +1,40 @@
+PLANOS DE EXECUÇÃO — SQLITE (AF Copilot)
+==============================================================
+
+CONSULTA LENTA 1 — LIKE com curinga à esquerda (medicamento)
+  SQL: SELECT * FROM fictional_lmes WHERE medicamento LIKE '%Metformina%' LIMIT 100
+  -> 3 | 0 | 216 | SCAN fictional_lmes
+
+OTIMIZADA 1 — filtro por status com índice
+  SQL: SELECT * FROM fictional_lmes WHERE status = 'faturada' LIMIT 100
+  -> 4 | 0 | 61 | SEARCH fictional_lmes USING INDEX ix_lme_status_usuario (status=?)
+
+CONSULTA LENTA 2 — busca textual por nome de paciente
+  SQL: SELECT * FROM fictional_users WHERE nome LIKE '%Arlindo%' LIMIT 100
+  -> 3 | 0 | 216 | SCAN fictional_users
+
+OTIMIZADA 2 — e-mail com índice único
+  SQL: SELECT * FROM fictional_users WHERE email = 'ficticio.000001@email.com'
+  -> 3 | 0 | 39 | SEARCH fictional_users USING INDEX ix_fictional_users_email (email=?)
+
+OTIMIZADA 3 — contagem de pacientes por unidade (Município/UF)
+  SQL: SELECT COUNT(*) FROM fictional_users WHERE unidade = 'UBS Fictícia Gandu'
+  -> 3 | 0 | 54 | SEARCH fictional_users USING COVERING INDEX ix_fictional_users_unidade (unidade=?)
+
+OTIMIZADA 4 — contagem de LMEs por CID
+  SQL: SELECT COUNT(*) FROM fictional_lmes WHERE cid10 = 'E11'
+  -> 3 | 0 | 52 | SEARCH fictional_lmes USING COVERING INDEX ix_lme_cid10 (cid10=?)
+
+OTIMIZADA 5 — LMEs pendentes por status + unidade
+  SQL: SELECT COUNT(*) FROM fictional_lmes WHERE status = 'pendente' AND user_id IN (SELECT id FROM fictional_users WHERE unidade = 'UBS Fictícia Gandu')
+  -> 3 | 0 | 53 | SEARCH fictional_lmes USING COVERING INDEX ix_lme_status_usuario (status=? AND user_id=?)
+  -> 8 | 0 | 0 | LIST SUBQUERY 1
+  -> 10 | 8 | 54 | SEARCH fictional_users USING COVERING INDEX ix_fictional_users_unidade (unidade=?)
+
+LEITURA DOS PLANOS:
+- LIKE '%termo%' = SCAN de tabela (~216 páginas nas consultas lentas).
+- SEARCH USING INDEX ix_lme_status = índice de status (~61 páginas).
+- SEARCH USING INDEX ix_fictional_users_unidade = unidade (~54 páginas).
+- SEARCH USING INDEX ix_lme_cid10 = CID (~52 páginas).
+- SEARCH USING INDEX ix_lme_status_usuario = status+usuario (~53 páginas).
+- email possui índice UNIQUE (sqlite_autoindex) (~39 páginas).
