@@ -8,7 +8,7 @@
 # As dependências do FRONTEND (Electron) estão em:
 #   desktop-client/package.json   -> npm install
 # As ferramentas de recon/validação (Playwright) estão em:
-#   tools/package.json            -> npm install
+#   tools/package.json            -> npm install 
 # ============================================================================
 
 # Core API
