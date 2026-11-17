@@ -1,7 +1,0 @@
-LATÊNCIA DO PIPELINE GEMINI — AF COPILOT
-======================================================================
-
- 10217.4 ms | modelo=gemini-3.5-flash-lite | intencao=lmes-pendentes | linhas=100 | Existem 533 LMEs aguardando autorização em Feira de Santana, sendo exibidos os primeiros 100 registros.
-     8.5 ms | modelo=gemini-3.5-flash-lite | intencao=lmes-pendentes | linhas=100 | Existem 533 LMEs aguardando autorização em Feira de Santana, sendo exibidos os primeiros 100 registros.
-  1304.7 ms | modelo=gemini-3.5-flash-lite | intencao=contagem | linhas=1 | Existem 1541 pacientes cadastrados em Vitória da Conquista.
-     6.8 ms | modelo=gemini-3.5-flash-lite | intencao=contagem | linhas=1 | Existem 1541 pacientes cadastrados em Vitória da Conquista.

@@ -1,7 +1,0 @@
-modelo=gemini-3.5-flash-lite
-prompt_teste_chars=346
-tokens_prompt=98
-tokens_resposta_estimados=~120 (redacao curta, medido por characteristic/4)
-custo_efetivo=R$ 0,00 (free tier, sem faturamento ativo)
-custo_estimado_pago=USD 0,10/1M entrada + USD 0,40/1M saida (classe flash-lite); a tarifa vigente deve ser confirmada no console
-observacao=tokens medidos com countTokens oficial do Gemini; latencia em latencia_ia.txt
